@@ -22,8 +22,11 @@
   "author": "Zach Carter",
   "license": "MIT",
   "bin": "jison2json.js",
+  "engines": {
+    "node": ">=0.9"
+  },
   "dependencies": {
-    "ebnf-parser": "0.0.1",
-    "lex-parser": "0.0.1"
+    "ebnf-parser": "git://github.com/GerHobbelt/ebnf-parser.git",
+    "lex-parser": "git://github.com/GerHobbelt/lex-parser.git"
   }
 }
