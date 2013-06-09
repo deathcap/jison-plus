@@ -2,10 +2,10 @@
 
 // Encodes Jison formatted grammars as JSON
 
-var fs = require('fs');
-var path = require('path');
-var bnfParser = require('ebnf-parser');
-var lexParser = require('lex-parser');
+var fs = require("fs");
+var path = require("path");
+var bnfParser = require("ebnf-parser");
+var lexParser = require("lex-parser");
 
 exports.main = function (argv) {
     if(argv.length == 1) return;
