@@ -25,7 +25,7 @@
     "node": ">=0.9"
   },
   "dependencies": {
-    "ebnf-parser": "git://github.com/GerHobbelt/ebnf-parser.git",
-    "lex-parser": "git://github.com/GerHobbelt/lex-parser.git"
+    "ebnf-parser": "git://github.com/GerHobbelt/ebnf-parser.git#master",
+    "lex-parser": "git://github.com/GerHobbelt/lex-parser.git#master"
   }
 }
