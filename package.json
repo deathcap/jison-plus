@@ -18,6 +18,7 @@
     "options",
     "parser"
   ],
+  "license": "MIT",
   "dependencies": {
     "underscore": "~1.8.3",
     "chalk": "~1.0.0"
