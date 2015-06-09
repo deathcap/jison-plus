@@ -350,6 +350,9 @@ ArgParser.prototype = {
     var options = _(this.specs).select(function(opt) {
       return opt.position === undefined;
     });
+    var showOptions = _(options).reject(function(opt) {
+      return opt.hidden;
+    }).toString();
 
     // assume there are no gaps in the specified pos. args
     positionals.forEach(function(pos) {
@@ -369,7 +372,7 @@ ArgParser.prototype = {
       str += posStr;
     });
 
-    if (options.length) {
+    if (showOptions) {
       if (!this._nocolors) {
         // must be a better way to do this
         str += chalk.blue(" [options]");
@@ -379,7 +382,7 @@ ArgParser.prototype = {
       }
     }
 
-    if (options.length || positionals.length) {
+    if (showOptions || positionals.length) {
       str += "\n\n";
     }
 
@@ -405,11 +408,11 @@ ArgParser.prototype = {
       }
       str += "\n";
     }, this);
-    if (positionals.length && options.length) {
+    if (positionals.length && showOptions) {
       str += "\n";
     }
 
-    if (options.length) {
+    if (showOptions) {
       if (!this._nocolors) {
         str += chalk.blue("Options:");
       }
