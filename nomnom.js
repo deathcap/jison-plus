@@ -130,7 +130,7 @@ ArgParser.prototype = {
           + require('path').basename(process.argv[1]);
     this.specs = this.specs || {};
 
-    var argv = argv || process.argv.slice(2);
+    argv = argv || process.argv.slice(2);
 
     var arg = Arg(argv[0]).isValue && argv[0],
         command = arg && this.commands[arg],
@@ -184,7 +184,7 @@ ArgParser.prototype = {
           this.specs.command = {
             position: 0,
             help: helpStringBuilder[helpType].call(this)
-          }
+          };
 
           if (this.fallback) {
             _(this.specs).extend(this.fallback.specs);
@@ -248,7 +248,6 @@ ArgParser.prototype = {
           /* -v */
           that.setOption(options, last, true);
         }
-
       }
       else if (arg.full) {
         var value = arg.value;
@@ -484,7 +483,7 @@ ArgParser.prototype.setOption = function(options, arg, value) {
 
 /* an arg is an item that's actually parsed from the command line
    e.g. "-l", "log.txt", or "--logfile=log.txt" */
-var Arg = function(str) {
+var Arg = function (str) {
   var abbrRegex = /^\-(\w+?)$/,
       fullRegex = /^\-\-(no\-)?(.+?)(?:=(.+))?$/,
       valRegex = /^[^\-].*/;
@@ -510,8 +509,8 @@ var Arg = function(str) {
     full: full,
     value: value,
     isValue: isValue
-  }
-}
+  };
+};
 
 
 /* an opt is what's specified by the user in opts hash */
