@@ -482,9 +482,9 @@ ArgParser.prototype.setOption = function(options, arg, value) {
 
 
 /* an arg is an item that's actually parsed from the command line
-   e.g. "-l", "log.txt", or "--logfile=log.txt" */
+   e.g. "-l", "-l+", "log.txt", or "--logfile=log.txt" */
 var Arg = function (str) {
-  var abbrRegex = /^\-(\w+?)$/,
+  var abbrRegex = /^\-(\w+?)([+-]?)$/,
       fullRegex = /^\-\-(no\-)?(.+?)(?:=(.+))?$/,
       valRegex = /^[^\-].*/;
 
@@ -501,6 +501,10 @@ var Arg = function (str) {
   }
   else if (full) {
     value = fullMatch[1] ? false : fullMatch[3];
+  }
+  else if (chars && chars.length === 1) {
+    // Only allow `-v-` or `-v+` when option `-v` is alone. Do *not* allow `-cfv-` or `-cfv+`!
+    value = charMatch[2] ? charMatch[2] === '+' : undefined;
   }
 
   return {
