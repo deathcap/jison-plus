@@ -229,7 +229,7 @@ ArgParser.prototype = {
         var last = arg.chars.pop();
 
         /* -cfv */
-        (arg.chars).forEach(function(ch) {
+        arg.chars.forEach(function (ch) {
           that.setOption(options, ch, true);
         });
 
@@ -329,7 +329,7 @@ ArgParser.prototype = {
     str += " " + this._script;
 
     var positionals = _(this.specs).select(function(opt) {
-      return opt.position != undefined;
+      return opt.position !== undefined;
     });
     positionals = _(positionals).sortBy(function(opt) {
       return opt.position;
@@ -445,7 +445,7 @@ ArgParser.prototype.setOption = function(options, arg, value) {
   if (option.callback) {
     var message = option.callback(value);
 
-    if (typeof message == "string") {
+    if (typeof message === "string") {
       this.print(message, 1);
     }
   }
@@ -453,7 +453,7 @@ ArgParser.prototype.setOption = function(options, arg, value) {
   if (option.type != "string") {
      try {
        // infer type by JSON parsing the string
-       value = JSON.parse(value)
+       value = JSON.parse(value);
      }
      catch(e) {}
   }
@@ -463,7 +463,7 @@ ArgParser.prototype.setOption = function(options, arg, value) {
   }
 
   var name = option.name || arg;
-  if (option.choices && option.choices.indexOf(value) == -1) {
+  if (option.choices && option.choices.indexOf(value) === -1) {
      this.print(name + " must be one of: " + option.choices.join(", "), 1);
   }
 
@@ -504,7 +504,7 @@ var Arg = function (str) {
   }
   else if (chars && chars.length === 1) {
     // Only allow `-v-` or `-v+` when option `-v` is alone. Do *not* allow `-cfv-` or `-cfv+`!
-    value = charMatch[2] ? charMatch[2] === '+' : undefined;
+    value = charMatch[2] ? charMatch[2] === "+" : undefined;
   }
 
   return {
@@ -518,7 +518,7 @@ var Arg = function (str) {
 
 
 /* an opt is what's specified by the user in opts hash */
-var Opt = function(opt) {
+var Opt = function (opt) {
   var strings = (opt.string || "").split(","),
       abbr, full, metavar, string, matches;
   for (var i = 0; i < strings.length; i++) {
@@ -562,8 +562,8 @@ var Opt = function(opt) {
     full: full,
     metavar: metavar,
     matches: function(arg) {
-      return opt.full == arg || opt.abbr == arg || opt.position == arg
-        || opt.name == arg || (opt.list && arg >= opt.position);
+      return opt.full === arg || opt.abbr === arg || opt.position == arg
+        || opt.name === arg || (opt.list && arg >= opt.position);
     }
   });
   return opt;
