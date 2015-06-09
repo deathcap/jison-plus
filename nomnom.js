@@ -221,6 +221,8 @@ ArgParser.prototype = {
     /* parse the args */
     var that = this;
     args.reduce(function(arg, val) {
+      var opt;
+
       /* positional */
       if (arg.isValue) {
         positionals.push(arg.value);
@@ -235,13 +237,18 @@ ArgParser.prototype = {
         });
 
         /* -v key */
-        if (!that.opt(last).flag) {
+        opt = that.opt(last);
+        if (!opt.flag) {
            if (val.isValue)  {
               that.setOption(options, last, val.value);
               return Arg(); // skip next turn - swallow arg
            }
+           else if (opt.__nomnom_dummy__) {
+              // unspecified options which have no value are considered to be *flag* options:
+              that.setOption(options, last, flagValue);
+           }
            else {
-              that.print("'-" + (that.opt(last).name || last) + "'"
+              that.print("'-" + (opt.name || last) + "'"
                 + " expects a value\n\n" + that.getUsage(), 1);
            }
         }
@@ -256,13 +263,18 @@ ArgParser.prototype = {
         /* --key */
         if (value === undefined) {
           /* --key value */
-          if (!that.opt(arg.full).flag) {
+          opt = that.opt(arg.full);
+          if (!opt.flag) {
             if (val.isValue) {
               that.setOption(options, arg.full, val.value);
               return Arg();
             }
+            else if (opt.__nomnom_dummy__) {
+              // unspecified options which have no value are considered to be *flag* options:
+              value = true;
+            }
             else {
-              that.print("'--" + (that.opt(arg.full).name || arg.full) + "'"
+              that.print("'--" + (opt.name || arg.full) + "'"
                 + " expects a value\n\n" + that.getUsage(), 1);
             }
           }
@@ -432,7 +444,7 @@ ArgParser.prototype = {
 
 ArgParser.prototype.opt = function(arg) {
   // get the specified opt for this parsed arg
-  var match = Opt({});
+  var match = Opt({ __nomnom_dummy__: true });
   this.specs.forEach(function(opt) {
     if (opt.matches(arg)) {
        match = opt;

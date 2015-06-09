@@ -15,6 +15,9 @@ exports.testFlag = function(test) {
    nomnom().options({
       file: {
          position: 0,
+      },
+      key1: {
+         flag: false,
       }
    })
    .printer(function(string) {
