@@ -1,7 +1,9 @@
 var _ = require("underscore"), chalk = require('chalk');
 
 
-var retArgs = function(){return Array.prototype.slice.call(arguments);};
+var retArgs = function (s) {
+  return s;
+};
 
 var noColorConfig = {
   usageHeadingColor: retArgs,
@@ -15,7 +17,7 @@ var noColorConfig = {
 var isWin = /^win/.test(process.platform);
 
 
-var defaultColorConfig = _.extend(noColorConfig, {
+var defaultColorConfig = _.extend({}, noColorConfig, {
   usageHeadingColor: chalk.bold,
   usageStringColor: chalk.stripColor,
   positionalHelpColor: chalk.grey,
@@ -130,16 +132,15 @@ ArgParser.prototype = {
     return this;
   },
 
-  _colorConfig: _.extend(defaultColorConfig),
+  _colorConfig: _.extend({}, defaultColorConfig),
 
   setColors: function(colorConfig) {
-    this._colorConfig = _.extend(defaultColorConfig, colorConfig);
-    // deprecated - colors are on by default now
+    this._colorConfig = _.extend({}, defaultColorConfig, colorConfig);
     return this;
   },
 
   nocolors : function() {
-    this._colorConfig = _.extend(noColorConfig);
+    this._colorConfig = _.extend({}, noColorConfig);
     return this;
   },
 
