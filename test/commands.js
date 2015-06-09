@@ -7,7 +7,7 @@ function strip(str) {
 exports.testCallback = function(test) {
    test.expect(1);
 
-   var parser = nomnom();
+   var parser = nomnom().autoShowUsage(false);
    parser.command('run').callback(function(options) {
       test.equal(options.v, 3);
    });
@@ -17,12 +17,12 @@ exports.testCallback = function(test) {
 
    parser.parse(["run","-v", "3"]);
    test.done();
-}
+};
 
 exports.testMissingCommand = function(test) {
    test.expect(1);
 
-   var parser = nomnom().scriptName("test");
+   var parser = nomnom().autoShowUsage(false).scriptName("test");
 
    parser.command('run');
 
@@ -32,12 +32,12 @@ exports.testMissingCommand = function(test) {
    });
 
    parser.parse(["other"]);
-}
+};
 
 exports.testNoCommand = function(test) {
    test.expect(2);
 
-   var parser = nomnom();
+   var parser = nomnom().autoShowUsage(false);
 
    parser.nocommand()
      .options({
@@ -56,10 +56,10 @@ exports.testNoCommand = function(test) {
 
    test.strictEqual(options.version, true);
    test.done();
-}
+};
 
 function createParser() {
-  var parser = nomnom().scriptName("test")
+  var parser = nomnom().autoShowUsage(false).scriptName("test")
      .options({
         debug: {
            flag: true
@@ -117,4 +117,4 @@ exports.testUsage = function(test) {
    parser.parse(["-h"]);
 
    test.done();
-}
+};
