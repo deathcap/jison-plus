@@ -219,15 +219,23 @@ ArgParser.prototype = {
 
     var options = {};
 
-    /* -- cmd --flags */
-    if (notFlags.length){
-      this.setOption(options, "--", notFlags);
-    }
-
     var args = argv.map(function(arg) {
       return Arg(arg);
-    })
-    .concat(Arg());
+    });
+
+    /* -- cmd --flags */
+    if (notFlags.length) {
+      this.setOption(options, "--", notFlags);
+      args = args.concat(notFlags.map(function (d) {
+        return {
+          str: d,
+          value: d,
+          isValue: true
+        };
+      }));
+    }
+
+    args = args.concat(Arg());
 
     var positionals = [];
 
