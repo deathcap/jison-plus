@@ -483,7 +483,7 @@ ArgParser.prototype = {
     }
 
     if (this._help) {
-      str += this._colorConfig.usageStringColor("\n"+ this._help);
+      str += this._colorConfig.usageStringColor("\n" + this._help);
     }
     return str;
   }
