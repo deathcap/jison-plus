@@ -319,7 +319,7 @@ ArgParser.prototype = {
     }
 
     // todo: use a template
-    var str = "\n"
+    var str = "\n";
     if (!this._nocolors) {
       str += chalk.bold("Usage:");
     }
@@ -330,7 +330,7 @@ ArgParser.prototype = {
 
     var positionals = _(this.specs).select(function(opt) {
       return opt.position != undefined;
-    })
+    });
     positionals = _(positionals).sortBy(function(opt) {
       return opt.position;
     });
@@ -371,11 +371,11 @@ ArgParser.prototype = {
     }
 
     function spaces(length) {
-      var spaces = "";
+      var s = "";
       for (var i = 0; i < length; i++) {
-        spaces += " ";
+        s += " ";
       }
-      return spaces;
+      return s;
     }
     var longest = positionals.reduce(function(max, pos) {
       return pos.name.length > max ? pos.name.length : max;
@@ -385,10 +385,10 @@ ArgParser.prototype = {
       var posStr = pos.string || pos.name;
       str += posStr + spaces(longest - posStr.length) + "     ";
       if (!this._nocolors) {
-        str += chalk.grey(pos.help || "")
+        str += chalk.grey(pos.help || "");
       }
       else {
-        str += (pos.help || "")
+        str += (pos.help || "");
       }
       str += "\n";
     }, this);
@@ -403,9 +403,9 @@ ArgParser.prototype = {
       else {
         str += "Options:";
       }
-      str += "\n"
+      str += "\n";
 
-      var longest = options.reduce(function(max, opt) {
+      longest = options.reduce(function(max, opt) {
         return opt.string.length > max && !opt.hidden ? opt.string.length : max;
       }, 0);
 
@@ -520,10 +520,9 @@ var Arg = function (str) {
 /* an opt is what's specified by the user in opts hash */
 var Opt = function(opt) {
   var strings = (opt.string || "").split(","),
-      abbr, full, metavar;
+      abbr, full, metavar, string, matches;
   for (var i = 0; i < strings.length; i++) {
-    var string = strings[i].trim(),
-        matches;
+    string = strings[i].trim();
     if (matches = string.match(/^\-([^-])(?:\s+(.*))?$/)) {
       abbr = matches[1];
       metavar = matches[2];
@@ -535,11 +534,10 @@ var Opt = function(opt) {
   }
 
   matches = matches || [];
-  var abbr = opt.abbr || abbr,   // e.g. v from -v
-      full = opt.full || full, // e.g. verbose from --verbose
-      metavar = opt.metavar || metavar;  // e.g. PATH from '--config=PATH'
+  abbr = opt.abbr || abbr;   // e.g. v from -v
+  full = opt.full || full; // e.g. verbose from --verbose
+  metavar = opt.metavar || metavar;  // e.g. PATH from '--config=PATH'
 
-  var string;
   if (opt.string) {
     string = opt.string;
   }
@@ -548,7 +546,7 @@ var Opt = function(opt) {
     if (abbr) {
       string += "-" + abbr;
       if (metavar)
-        string += " " + metavar
+        string += " " + metavar;
       string += ", ";
     }
     string += "--" + (full || opt.name);
@@ -569,12 +567,12 @@ var Opt = function(opt) {
     }
   });
   return opt;
-}
+};
 
 
 var createParser = function() {
   return new ArgParser();
-}
+};
 
 var nomnom = createParser();
 

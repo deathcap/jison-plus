@@ -26,19 +26,19 @@ exports.testOption = function(test) {
    test.strictEqual(opts.debug, true);
    test.equal(opts.config, "config.json");
    test.done();
-}
+};
 
 
 exports.testCommandOption = function(test) {
-   var parser = nomnom()
+   var parser = nomnom();
    parser.command('test')
      .option('fruit', {
         abbr: 'f',
         flag: true
-     })
+     });
 
    var opts = parser.parse(["test", "-f"]);
 
    test.strictEqual(opts.fruit, true);
    test.done();
-}
+};
