@@ -42,10 +42,23 @@ exports.testFlag = function(test) {
 }
 
 exports.testNotFlags = function(test) {
-  var options = parser.parse(["--", "foo", "--no-verbose"]);
+  var options = parser.parse(["--voom", "7", "abc", "--", "foo", "--no-verbose"]);
 
+  console.log("type: ", typeof options.voom);
   test.strictEqual(options.verbose, true);
+  test.strictEqual(options.voom, 7);
   test.deepEqual(options["--"], ["foo", "--no-verbose"]);
+  test.strictEqual(options._[0], "abc");
+  // and make sure the items after `--` have been added to the positionals as `--` should be transparent to the calling code that way:
+  test.strictEqual(options._[1], "foo");
+  test.strictEqual(options._[2], "--no-verbose");
+  // as the positionals are assigned to the specified positional options, those should also show the arguments following the `--`:
+  // list3 starts at positional [1], hence it would NOT include 'abc' in the list:
+  test.strictEqual(options.list3[0], "foo");
+  test.strictEqual(options.list3[1], "--no-verbose");
+  test.strictEqual(options[0], "abc");
+  test.strictEqual(options[1], undefined);
+  
   test.done();
 }
 
