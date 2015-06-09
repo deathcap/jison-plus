@@ -3,21 +3,21 @@ var nomnom = require("../nomnom");
 exports.testVersion = function(test) {
    test.expect(1);
    
-   nomnom().options({
+   nomnom().autoShowUsage(false).options({
       date: {
          callback: function(date) {
-            test.equal(date, "2010-02-03", "date should match value")
+            test.equal(date, "2010-02-03", "date should match value");
          }
       }
    }).parse(["--date=2010-02-03"]);
 
    test.done();
-}
+};
 
 exports.testReturnString = function(test) {
    test.expect(1);
 
-   nomnom().options({
+   nomnom().autoShowUsage(false).options({
       version: {
          flag: true,
          callback: function() {
@@ -26,8 +26,8 @@ exports.testReturnString = function(test) {
       }
    })
    .printer(function(string) { 
-      test.equal(0, string.indexOf("v0.3"))
+      test.equal(0, string.indexOf("v0.3"));
       test.done();
    })
    .parse(["--version"]);
-}
+};

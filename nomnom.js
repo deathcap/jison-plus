@@ -102,7 +102,7 @@ ArgParser.prototype = {
     return this;
   },
 
-  _autoShowUsage: false,
+  _autoShowUsage: true,
 
   autoShowUsage : function(enable) {
     this._autoShowUsage = (enable !== false);
