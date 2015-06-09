@@ -1,6 +1,7 @@
 var nomnom = require("../nomnom");
 
 var parser = nomnom()
+   .autoShowUsage(false)
    .option('debug', {
       abbr: 'x',
       flag: true,
@@ -39,7 +40,7 @@ exports.testOption = function(test) {
 
 
 exports.testCommandOption = function(test) {
-   var parser = nomnom();
+   var parser = nomnom().autoShowUsage(false);
    parser.command('test')
      .option('fruit', {
         abbr: 'f',

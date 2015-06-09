@@ -1,6 +1,7 @@
 var nomnom = require("../nomnom");
 
 var parser = nomnom()
+    .autoShowUsage(false)
     .option("addr", {
         abbr: "a",
         help: "host:port address",
@@ -38,7 +39,7 @@ exports.testTransformString = function(test) {
 exports.testTransformCommand = function(test) {
     test.expect(1);
 
-    var parser = nomnom().scriptName("test")
+    var parser = nomnom().autoShowUsage(false).scriptName("test")
         .options({
             addr: {
                 transform: function(value) {
