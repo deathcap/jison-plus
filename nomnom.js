@@ -178,8 +178,8 @@ ArgParser.prototype = {
     argv = argv || process.argv.slice(2);
 
     // Automatically print the help when no argument has been provided at all:
-    if (this._autoShowUsage && argv[2] === undefined) {
-      argv[2] = '-h';
+    if (this._autoShowUsage && argv.length === 0) {
+      argv[0] = '-h';
     }
 
     var notFlags = [];
