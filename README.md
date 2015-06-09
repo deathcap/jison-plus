@@ -88,7 +88,10 @@ parser.parse();
 Each command generates its own usage message when `-h` or `--help` is specified with the command.
 
 # Usage
-Nomnom prints out a usage message if `--help` or `-h` is an argument. Usage for these options in `test.js`:
+
+Nomnom prints out a usage message if `--help` or `-h` is an argument. If no commands are called (the script is simply run without arguments), `-h` will be called automatically. 
+
+Usage for these options in `test.js`:
 
 ```javascript
 var opts = require("nomnom")

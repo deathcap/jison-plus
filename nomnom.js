@@ -168,6 +168,8 @@ ArgParser.prototype = {
           + require('path').basename(process.argv[1]);
     this.specs = this.specs || {};
 
+    if (!process.argv[2]) process.argv[2] = '-h';
+
     argv = argv || process.argv.slice(2);
 
     var notFlags = [];
