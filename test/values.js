@@ -27,7 +27,7 @@ var opts = {
    def2: {
       default: "val1"
    }
-}
+};
 
 var parser = nomnom().options(opts);
 
@@ -39,12 +39,11 @@ exports.testFlag = function(test) {
    test.equal(options[0], "pos0");
    test.equal(options._[0], "pos0");
    test.done();
-}
+};
 
 exports.testNotFlags = function(test) {
   var options = parser.parse(["--voom", "7", "abc", "--", "foo", "--no-verbose"]);
 
-  console.log("type: ", typeof options.voom);
   test.strictEqual(options.verbose, true);
   test.strictEqual(options.voom, 7);
   test.deepEqual(options["--"], ["foo", "--no-verbose"]);
@@ -60,7 +59,7 @@ exports.testNotFlags = function(test) {
   test.strictEqual(options[1], undefined);
   
   test.done();
-}
+};
 
 exports.testList = function(test) {
    var options = parser.parse(["pos0", "pos1", "--list1=val0", "--list2", "val1",
@@ -70,7 +69,7 @@ exports.testList = function(test) {
    test.deepEqual(options.list2, ["val1", "val2"]);
    test.deepEqual(options.list3, ["pos1", "pos2"]);
    test.done();
-}
+};
 
 exports.testDefault = function(test) {
    var options = parser.parse(["--def2", "val2", "--def3", "val3"]);
@@ -79,7 +78,7 @@ exports.testDefault = function(test) {
    test.strictEqual(options.def2, "val2");
    test.strictEqual(options.def3, "val3");
    test.done();
-}
+};
 
 exports.testTypes = function(test) {
    var options = parser.parseArgs(["", "-x", "3.14", "-w", "true", "-q", "120",
@@ -91,6 +90,6 @@ exports.testTypes = function(test) {
    test.strictEqual(options.q, 120);
    test.strictEqual(options.num1, "4");
    test.done();
-}
+};
 
 

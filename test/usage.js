@@ -80,6 +80,40 @@ exports.testUsage = function(test) {
       .parse(["--help"]);
 };
 
+exports.testAutoShowUsage = function(test) {
+   test.expect(5);
+
+   var options = nomnom()
+      .usage("test usage")
+      .printer(function(string) {
+         test.equal(string, "test usage");
+      })
+      .nocolors()
+      .parse([]);
+   test.strictEqual(options, undefined);
+
+   options = nomnom()
+      .autoShowUsage(false)
+      .usage("test usage")
+      .printer(function(string) {
+         test.ok(!"should never get here");
+      })
+      .nocolors()
+      .parse([]);
+   test.equal(options._.length, 0);
+
+   options = nomnom()
+      .autoShowUsage()
+      .usage("test usage")
+      .printer(function(string) {
+         test.equal(string, "test usage");
+      })
+      .nocolors()
+      .parse([]);
+   test.strictEqual(options, undefined);
+   test.done();
+};
+
 exports.testHidden = function(test) {
    test.expect(1);
 
