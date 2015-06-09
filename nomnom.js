@@ -102,6 +102,13 @@ ArgParser.prototype = {
     return this;
   },
 
+  _autoShowUsage: true,
+
+  autoShowUsage : function(enable) {
+    this._autoShowUsage = !!enable;
+    return this;
+  },
+
   usage : function(usage) {
     this._usage = usage;
     return this;
@@ -168,9 +175,12 @@ ArgParser.prototype = {
           + require('path').basename(process.argv[1]);
     this.specs = this.specs || {};
 
-    if (!process.argv[2]) process.argv[2] = '-h';
-
     argv = argv || process.argv.slice(2);
+
+    // Automatically print the help when no argument has been provided at all:
+    if (this._autoShowUsage && argv[2] === undefined) {
+      argv[2] = '-h';
+    }
 
     var notFlags = [];
     var doubleDashIndex = argv.indexOf("--");
