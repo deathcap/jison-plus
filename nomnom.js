@@ -413,7 +413,7 @@ ArgParser.prototype = {
         if (!opt.hidden) {
           str += "   " + opt.string + spaces(longest - opt.string.length) + "   ";
 
-          var defaults = (opt.default != null ? "  [" + opt.default + "]" : "");
+          var defaults = (opt.default !== undefined ? "  [" + opt.default + "]" : "");
           var help = opt.help ? opt.help + defaults : "";
           str += this._nocolors ? help: chalk.grey(help);
 
