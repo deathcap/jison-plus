@@ -227,6 +227,7 @@ ArgParser.prototype = {
       }
       else if (arg.chars) {
         var last = arg.chars.pop();
+        var flagValue = (arg.value === undefined ? true : arg.value);
 
         /* -cfv */
         arg.chars.forEach(function (ch) {
@@ -245,8 +246,8 @@ ArgParser.prototype = {
            }
         }
         else {
-          /* -v */
-          that.setOption(options, last, true);
+          /* -v with optional '+' or '-' */
+          that.setOption(options, last, flagValue);
         }
       }
       else if (arg.full) {

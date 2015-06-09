@@ -10,6 +10,20 @@ var opts = {
    flag1: {
       flag: true
    },
+   flag2: {
+      flag: true,
+      abbr: 'X',
+      default: true
+   },
+   flag3: {
+      abbr: 'Y',
+      flag: true
+   },
+   flag4: {
+      flag: true,
+      abbr: 'Z',
+      default: true
+   },
    debug: {
       abbr: 'd'
    },
@@ -40,7 +54,7 @@ var opts = {
 var parser = nomnom().options(opts);
 
 exports.testPositional = function(test) {
-   var options = parser.parse(["--flag1", "val1", "--config", "file", "val2"]);
+   var options = parser.parse(["--flag1", "val1", "--config", "file", "val2", "--flag2", "-Y-"]);
    
    test.equal(options.pos1, "val1");
    test.equal(options.pos2, "val2");
@@ -68,3 +82,24 @@ exports.testString = function(test) {
    test.equal(options.skey4, "val4")
    test.done();
 }
+
+exports.testFlags = function(test) {
+   var options = parser.parse(["--flag1", "--no-flag1", "val1", "--config", "file", "val2", "-X", "-Y+", "-Z-"]);
+   
+   test.equal(options.flag1, false);
+   test.equal(options.flag2, true);
+   test.equal(options.flag3, true);
+   test.equal(options.flag4, false);
+   test.done();
+}
+
+exports.testCombinedFlags = function(test) {
+   var options = parser.parse(["--no-flag1", "val1", "--config", "file", "val2", "-XYZ"]);
+   
+   test.equal(options.flag1, false);
+   test.equal(options.flag2, true);
+   test.equal(options.flag3, true);
+   test.equal(options.flag4, true);
+   test.done();
+}
+
