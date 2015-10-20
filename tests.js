@@ -1,5 +1,5 @@
 // TODO real tests
-var assert = require("assert");
+var assert = require('assert');
 var jison2json = require('./jison2json');
 var grammar = "%% foo: bar { return true; };";
 
