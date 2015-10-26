@@ -18,7 +18,6 @@ exports.main = function (argv) {
     if (args.length) {
         bnf = fs.readFileSync(path.resolve(args[0]), 'utf8');
         if (args[1]) {
-        console.log('???lex');
             lex = fs.readFileSync(path.resolve(args[1]), 'utf8');
         }
 
