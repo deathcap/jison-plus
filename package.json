@@ -1,6 +1,6 @@
 {
   "name": "jison2json",
-  "version": "0.0.2",
+  "version": "0.0.2-101",
   "description": "Converts jison grammar definitions to JSON",
   "main": "jison2json.js",
   "scripts": {
@@ -18,7 +18,11 @@
     "generator"
   ],
   "preferGlobal": true,
-  "author": "Zach Carter",
+  "author": {
+    "name": "Zach Carter",
+    "email": "zach@carter.name",
+    "url": "http://zaa.ch"
+  },
   "license": "MIT",
   "bin": "jison2json.js",
   "engines": {
