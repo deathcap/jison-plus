@@ -29,7 +29,7 @@
   },
   "main": "lib/jison",
   "bin": {
-    "jison": "lib/cli.js"
+    "jison-plus": "lib/cli.js"
   },
   "engines": {
     "node": ">=0.9"
