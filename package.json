@@ -4,8 +4,8 @@
     "email": "zach@carter.name",
     "url": "http://zaa.ch"
   },
-  "name": "jison",
-  "description": "A parser generator with Bison's API",
+  "name": "jison-plus",
+  "description": "An experimental fork of jison (parser generator with Bison's API) with many changes",
   "version": "0.4.17-113",
   "license": "MIT",
   "keywords": [
@@ -22,11 +22,10 @@
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/zaach/jison.git"
+    "url": "git://github.com/deathcap/jison-plus.git"
   },
   "bugs": {
-    "email": "jison@librelist.com",
-    "url": "http://github.com/zaach/jison/issues"
+    "url": "https://github.com/deathcap/jison-plus/issues"
   },
   "main": "lib/jison",
   "bin": {
@@ -50,6 +49,5 @@
   },
   "scripts": {
     "test": "node tests/all-tests.js"
-  },
-  "homepage": "http://jison.org"
+  }
 }
