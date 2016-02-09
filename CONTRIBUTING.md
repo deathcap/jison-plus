@@ -1,29 +1,27 @@
-Contributing to Jison
-=======
+# jison-plus is an OPEN Open Source Project
 
-Fork, make your changes, run tests and/or add tests then send a pull request.
+-----------------------------------------
 
-## Running tests
+## What?
 
-Prerequesites: `node` and `npm`.
+Individuals making significant and valuable contributions are given commit-access to the project to contribute as they see fit. This project is more like an open wiki than a standard guarded open source project.
 
-First run:
+## Rules
 
-    npm install
+There are a few basic ground-rules for contributors:
 
-Then run tests with:
+1. **No `--force` pushes** or modifying the Git history in any way.
+1. **Non-master branches** ought to be used for ongoing work.
+1. **External API changes and significant modifications** ought to be subject to an **internal pull-request** to solicit feedback from other contributors.
+1. Internal pull-requests to solicit feedback are *encouraged* for any other non-trivial contribution but left to the discretion of the contributor.
+1. Contributors should attempt to adhere to the prevailing code-style.
 
-    make test
+## Releases
 
-## Building the site
+Declaring formal releases remains the prerogative of the project maintainer.
 
-To build the site, as well as the Browserified web version of Jison, run:
+## Changes to this arrangement
 
-    make site
-    
-Then you can also preview the site by doing:
+This is an experiment and feedback is welcome! This document may also be subject to pull-requests or changes by contributors where you believe you have something valuable to add or change.
 
-    make preview
-    
-Note that you will need `nanoc` and `adsf` in order to build/preview the site. `gem install` them if you haven't.
-
+-----------------------------------------
