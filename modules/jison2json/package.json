@@ -1,0 +1,35 @@
+{
+  "name": "jison2json",
+  "version": "0.0.2-113",
+  "description": "Converts jison grammar definitions to JSON",
+  "main": "jison2json.js",
+  "scripts": {
+    "test": "node tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zaach/jison2json.git"
+  },
+  "keywords": [
+    "jison",
+    "json",
+    "grammar",
+    "parser",
+    "generator"
+  ],
+  "preferGlobal": true,
+  "author": {
+    "name": "Zach Carter",
+    "email": "zach@carter.name",
+    "url": "http://zaa.ch"
+  },
+  "license": "MIT",
+  "bin": "jison2json.js",
+  "engines": {
+    "node": ">=0.9"
+  },
+  "dependencies": {
+    "ebnf-parser": "GerHobbelt/ebnf-parser#master",
+    "lex-parser": "GerHobbelt/lex-parser#master"
+  }
+}
