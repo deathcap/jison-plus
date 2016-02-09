@@ -20,8 +20,6 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "underscore": "1.8.3",
-    "chalk": "1.0.0"
   },
   "devDependencies": {
     "nodeunit": "0.9.1"
