@@ -6,7 +6,7 @@
   },
   "name": "jison-plus",
   "description": "An experimental fork of jison (parser generator with Bison's API) with many changes",
-  "version": "0.4.17-113",
+  "version": "1.0.0",
   "license": "MIT",
   "keywords": [
     "jison",
