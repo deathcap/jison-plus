@@ -1,9 +1,17 @@
-Jison
+Jison-plus
 =====
-* [Issues](http://github.com/zaach/jison/issues)
-* [Discuss](mailto:jison@librelist.com)
+* [Issues](http://github.com/deathcap/jison-plus/issues)
 
-[![build status](https://secure.travis-ci.org/zaach/jison.png)](http://travis-ci.org/zaach/jison)
+[![build status](https://secure.travis-ci.org/deathcap/jison-plus.png)](http://travis-ci.org/deathcap/jison-plus)
+
+An experimental branch of [https://github.com/zaach/jison](https://github.com/zaach/jison) with lots of various changes,
+including those by [GerHobbelt](https://github.com/GerHobbelt/jison/). Thanks to all contributors.
+
+original readme:
+
+---
+
+
 
 An API for creating parsers in JavaScript
 -----------------------------------------
